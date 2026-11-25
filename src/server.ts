@@ -12,6 +12,11 @@ import { openaiWebSearchAgent } from './openai-web-search-agent.js';
 const app = express();
 app.use(express.json());
 
+app.use((req: Request, _res: Response, next) => {
+  console.log(`[${req.method}] ${req.path}`);
+  next();
+});
+
 const prompt = 'Invent a new holiday and describe its traditions.';
 
 app.get('/', (_req: Request, res: Response) => {
