@@ -12,6 +12,7 @@ import { openaiWebSearchAgent } from './openai-web-search-agent.js';
 const app = express();
 app.use(express.json());
 
+// Log every incoming request along with its route
 app.use((req: Request, _res: Response, next) => {
   console.log(`[${req.method}] ${req.path}`);
   next();
