@@ -13,6 +13,12 @@ npm run dev
 
 普通 Node.js 部署可执行 `npm run build`，然后用 `npm start` 启动，默认监听 8080 端口。本地终端可核对实际输出内容与换行。
 
+### 查看构建和运行时的 Node.js 版本
+
+部署后打开 `/node-version`，或从首页点击「查看构建和运行时的 Node.js 版本」。`buildNode` 来自本次 `npm run build` 保存的版本，`runtimeNode` 来自处理请求的 Node.js 进程。两个完整版本号相同时，`exactMatch` 为 `true`。如果没有构建记录，例如刚检出项目就运行 `npm run dev`，`buildNode` 和 `exactMatch` 都为 `null`。
+
+Vercel 使用默认 Express 构建设置时会执行本项目的 `build` 脚本。如果已自定义 Build Command，请确保该命令执行 `npm run build`。
+
 在 ESA 部署此仓库时，使用 Express，安装命令填 `npm install`，函数入口填 `src/app.ts`。该文件默认导出 Express 应用。测试 Pages 时，让 `/log-tests` 和 `/log-tests/*` 都由动态函数处理。若配置了静态托管的导航回退策略，浏览器直接打开测试页时可能收到静态页面。[ESA Express 部署说明](https://help.aliyun.com/zh/edge-security-acceleration/esa/user-guide/express) · [Pages 构建与路由说明](https://help.aliyun.com/zh/edge-security-acceleration/esa/user-guide/build-pages)
 
 若 ESA 预览地址带有查询参数，可从项目首页点击「ESA 即时日志测试」。测试页链接和后续表单请求都会携带预览参数。
