@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "tsx src/server.ts",
+    "build": "tsc --build",
+    "start": "node build/server.js",
     "type-check": "tsc --build"
   },
   "dependencies": {
